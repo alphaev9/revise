@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<!---->
+<mapper namespace="com.revise.app.persistence.mybatis.BacklogMapper">
+    <insert id="addBook" parameterType="book"
+            keyProperty="id" useGeneratedKeys="true">
+        INSERT INTO revise.book (title, author, press,pubDate)
+        VALUES (#{title}, #{author}, #{press},#{pubDate})
+    </insert>
+
+    <select id="queryByAuthor" parameterType="string" resultType="book">
+        SELECT *
+        FROM revise.book
+        WHERE author = #{author}
+    </select>
+
+    <delete id="delete" parameterType="integer">
+        delete  from book where id=#{id}
+    </delete>
+</mapper>
